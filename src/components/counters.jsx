@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Counter from './counter';
 
 class Counters extends Component {
-    render() { 
+    render() {  
         //Object destructuring :: so we can remove long arguments, example: {this.props.totalCounters}
         const { counters, onReset, onDelete, onIncrement } = this.props;
  

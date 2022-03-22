@@ -1,22 +1,13 @@
 import React, { Component, useEffect, useState } from 'react';
-import { NavItem } from 'react-bootstrap';
 
-/*
-            headers : {
-                'Content-Type': 'text/plain',
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            }
-*/
+
  
 // Stateless functional component :: instead of a class
+// Cannot return lifecycle hooks in stateless function :: can only return an output
 const RestFetchJson = (props) => {
     const [data, setData] =  useState([]);
     const getData=()=>{
-        // ./components/files/bus_routes.json
-        // http://localhost:8080/api/v1/student
-        // Axion ?? 
+ 
         fetch('http://localhost:8080/api/journey', {
             headers : {
                 'Content-Type': 'application/json',
@@ -50,12 +41,5 @@ const RestFetchJson = (props) => {
         </nav>
     );
 };
-/*
-        <span>
-        {
-            data && data.length>0 && data.map(<a href="?">item.about</a>)
-        } 
-        </span>
 
-//*/
 export default RestFetchJson;

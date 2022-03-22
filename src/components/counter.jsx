@@ -6,34 +6,14 @@ class Counter extends Component {
         value: this.props.counter.value, // inherit from <Counter /> in Counters.jsx
         imageUrl: 'https://picsum.photos/300',
         tags: ['tag1','tag2','tag3']
-    };  
-
-    // Referens for non returning Methods to get 'this'
-    //constructor() {
-    //    super(); // Specifies as 'base constructor'
-    //    this.handleClickMethod = this.handleClickMethod.bind(this); 
-    //}
-
-    //// Does not return needs constructor to inherit 'this'
-    //handleClickMethod() {  //onClick={ this.handleClickMethod }
-    //    console.log("executes onload if specified as returning method, if specified as non return method it does not inherit 'this'");
-    //    console.log("to inherit 'this' we need to 'bind' it from a constructor", this);
-    //}
-
-    //// ArrowFunctions can pass arguments and also has access to 'this'
-    //handleClickMethod = () => { //onClick={ this.handleClickMethod }
-    //    this.setState({ count: this.state.count + 1 });
-    //}
+    }; 
 
     // ArrowFunctions with argument
     handleClickMethod = product => { // onClick={() => this.handleClickMethod(this.state)}
         console.log(product);
         this.setState({ value: this.state.value + 1 });
     }
-    // Passing argument middle hand if to set arguments manually outside render
-    //doHandleClickMethod = () => { // onClick={this.doHandleClickMethod} 
-    //  this.handleClickMethod({ id: 1 });
-    //}  
+
 
     // functions that returns, inherit 'this'.
     renderTags() { // { this.renderTags() }
@@ -63,7 +43,7 @@ class Counter extends Component {
         let myClasses = "inlineClass";
             myClasses += (this.state.value === 0) ? "-invalid" : "-active";
 
-        return (
+        return ( 
             <div >
                 {this.props.children}
                 { true && "Wierd return of last statemen in js 'if' statement"}

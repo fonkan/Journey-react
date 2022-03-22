@@ -1,32 +1,68 @@
 import axios from 'axios';
-import React, { Component, useEffect, useState } from 'react';
+import { Component, useEffect, useState } from 'react';
 
-function fetchData(url) {
+function FetchData() {
     const [data, setData] =  useState([]);
     const [loading, setLoading] =useState(false);
     const [error, setError] = useState(null);
-
-
-
-    useEffect(()=>{
+    const [format, setFormat] = useState([])
+    
+    
+  
+  
+    useEffect(() => {
         setLoading(true)
-        useEffect(() => {
-            axios.get('http://localhost:8080/api/journey')
-            .then(response => {
-                console.log(response);
-                setData(response.data);
-            })
-            .catch(error => {
-                setError(error);
-            })
-            .finally(() => {
-                setLoading(false);
-            })
+        axios.get('http://localhost:8080/api/journey')
+        .then(response => {
+            console.log(response);
+
+            response.data.map((value, index) => {
+            
+                format[value[0]] = {
+                    "id" : value[0],
+                    "lineNumber" : value[1],
+
+                }
+            }) 
+            //setData(setFormat);
+            setData(response.data);
         })
-    },[url])
-    return (data, loading, error);
+        .catch(error => {
+            setError(error);
+        })
+        .finally(() => {
+            setLoading(false);
+        })
+    },[])
+    
+    const refetch = () => {
+        setLoading(true)
+        axios.get('http://localhost:8080/api/journey')
+        .then(response => {
+            console.log(response);
+
+            response.data.map((value, index) => {
+            
+                format[value[0]] = {
+                    "id" : value[0],
+                    "lineNumber" : value[1],
+
+                }
+            }) 
+            //setData(setFormat);
+            setData(response.data);
+        })
+        .catch(error => {
+            setError(error);
+        })
+        .finally(() => {
+            setLoading(false);
+        })
+    }
+    
+    return (data, loading, error, refetch);
 
 
 };
 
-export default fetchData;
+export default FetchData;
