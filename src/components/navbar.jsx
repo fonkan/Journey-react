@@ -1,37 +1,28 @@
+
 import React, { Component, useEffect, useState } from 'react';
-
-
-class NavBar extends Component {
+class Navbar extends Component {
     render() { 
         const { totalCounters } = this.props;
- 
+  
         return (
-            <nav className="navbar navbar-light bg-light">
-                <div className="container-fluid">
-                <a className="navbar-brand" href="#">
+            <div className='header'>
+                <div>
+                    <h1>SL Teklab</h1>
+                    <span>sampling data</span>
+                </div>
+            <nav className="navbar">
+                <div>
+                <a className="navbar-link" href="#">
                     Navbar{" "}
-                    <span className="aClass">
+                    <span>
                         {totalCounters}    
                     </span>
                 </a>
                 </div>
             </nav>
+            </div>
         );
     }
 }
-/*
-// Stateless functional component :: instead of a class
-const NavBar = (props) => {
-    return (
-    <nav className="navbar navbar-light bg-light">
-        <a className="navbar-brand" href="#">
-            Navbar{" "}
-            <span className="aClass">
-                {props.totalCounters}    
-            </span>
-        </a>
-    </nav>
-    );
-};
-//*/
-export default NavBar;
+
+export default Navbar;
